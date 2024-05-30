@@ -4,6 +4,16 @@
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
 
+  @media (max-width: 645px) {
+    .container {
+      flex-direction: column;
+
+      .header__cart {
+        margin-top: 20px;
+      }
+    }
+  }
+
   .container {
     display: flex;
     align-items: center;
