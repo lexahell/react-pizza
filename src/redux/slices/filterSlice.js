@@ -1,4 +1,4 @@
-feat: Added redux-toolkit and redux application logicimport { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   categoryId: 0,
