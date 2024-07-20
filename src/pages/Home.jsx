@@ -4,14 +4,18 @@ import Sort from '../components/Sort';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import PizzaBlock from '../components/PizzaBlock';
 import Pagination from '../components/Pagination';
-import { SearchContext } from '../App';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter, setCategoryId, setCurrentPage } from '../redux/slices/filterSlice';
+import {
+  selectFilter,
+  setCategoryId,
+  setCurrentPage,
+} from '../redux/slices/filterSlice';
 import { fetchPizzas, SelectPizzaData } from '../redux/slices/pizzaSlice';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { categoryId, sort, currentPage, searchValue } = useSelector(selectFilter);
+  const { categoryId, sort, currentPage, searchValue } =
+    useSelector(selectFilter);
   const { items, status } = useSelector(SelectPizzaData);
   const sortType = sort.sortProperty;
 
@@ -48,7 +52,9 @@ const Home = () => {
   const pizzas =
     items !== 'Not found'
       ? items
-          .filter((el) => el.title.toLowerCase().includes(searchValue.toLowerCase()))
+          .filter((el) =>
+            el.title.toLowerCase().includes(searchValue.toLowerCase())
+          )
           .map((obj) => <PizzaBlock key={obj.id} {...obj} />)
       : [];
   const skeletons = [...new Array(8)].map((elem, index) => (
