@@ -1,30 +1,31 @@
 import React from 'react';
 import Categories from '../components/Categories';
-import Sort from '../components/Sort';
+import Sort from '../components/SortPopUp';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import PizzaBlock from '../components/PizzaBlock';
 import Pagination from '../components/Pagination';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   selectFilter,
   setCategoryId,
   setCurrentPage,
 } from '../redux/slices/filterSlice';
-import { fetchPizzas, SelectPizzaData } from '../redux/slices/pizzaSlice';
+import { fetchPizzas, Pizza, SelectPizzaData } from '../redux/slices/pizzaSlice';
+import { useAppDispatch } from '../redux/store';
 
-const Home = () => {
-  const dispatch = useDispatch();
+const Home: React.FC = () => {
+  const dispatch = useAppDispatch();
   const { categoryId, sort, currentPage, searchValue } =
     useSelector(selectFilter);
   const { items, status } = useSelector(SelectPizzaData);
   const sortType = sort.sortProperty;
 
-  const onChangeCategory = (id) => {
+  const onChangeCategory = (id: number) => {
     dispatch(setCategoryId(id));
   };
 
-  const onChangePage = (number) => {
-    dispatch(setCurrentPage(number));
+  const onChangePage = (page: number) => {
+    dispatch(setCurrentPage(page));
   };
 
   const getPizzas = async () => {
@@ -50,12 +51,12 @@ const Home = () => {
   }, [categoryId, sortType, searchValue, currentPage]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const pizzas =
-    items !== 'Not found'
+    items.length > 0
       ? items
-          .filter((el) =>
+          .filter((el: Pizza) =>
             el.title.toLowerCase().includes(searchValue.toLowerCase())
           )
-          .map((obj) => <PizzaBlock key={obj.id} {...obj} />)
+          .map((obj: Pizza) => <PizzaBlock key={obj.id} {...obj} />)
       : [];
   const skeletons = [...new Array(8)].map((elem, index) => (
     <Skeleton key={index} />
