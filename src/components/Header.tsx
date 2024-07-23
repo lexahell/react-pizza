@@ -6,7 +6,7 @@ import React from 'react';
 import { selectCart } from '../redux/cart/selectors';
 import { ICartItem } from '../redux/cart/types';
 
-function Header() {
+export function Header() {
   const { items, totalPrice } = useSelector(selectCart);
   const { pathname } = useLocation();
   const isMounted = React.useRef(false);
@@ -78,4 +78,3 @@ function Header() {
     </div>
   );
 }
-export default Header;
