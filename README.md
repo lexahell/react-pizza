@@ -20,4 +20,4 @@
 * Пагинация списка пицц.
 
 # Результат можно посмотреть по ссылке
-[master--lexahell-react-pizza.netlify.app/](master--lexahell-react-pizza.netlify.app/)
+[https://master--lexahell-react-pizza.netlify.app/](https://master--lexahell-react-pizza.netlify.app/)
