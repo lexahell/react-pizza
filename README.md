@@ -18,3 +18,6 @@
 * Фильтрация пицц по категориям.
 * Добавление и удаление пицц в корзину.
 * Пагинация списка пицц.
+
+# Результат можно посмотреть по ссылке
+[master--lexahell-react-pizza.netlify.app/](master--lexahell-react-pizza.netlify.app/)
